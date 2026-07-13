@@ -3,14 +3,15 @@
 ### Ollama
 ``` java 
 로컬 환경에서 LLM을 실행
-https://ollama.com/search 참고
+OS에 맞게 다운로드 진행
+URL : https://ollama.com/search
 ```
 
 ### Hugging Face
 ``` java 
-AI 모델과 데이터셋의 GitHub 같은 플랫폼입니다.
-
+AI모델과 데이터셋의 GitHub 같은 플랫폼
 Hugging Face = 모델 저장소/생태계, Ollama = 로컬 실행 엔진
+URL : https://huggingface.co/
 ```
 
 ### 이번 프로젝트에서 사용한 모델

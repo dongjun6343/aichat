@@ -1,4 +1,4 @@
-### Spring AI + Ollama + Huggin Face
+### Spring AI + Ollama + Hugging Face
 
 ### Ollama
 ``` java 

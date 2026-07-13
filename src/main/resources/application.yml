@@ -8,3 +8,9 @@ spring:
         model: openai/gpt-4.1-nano
         base-url: https://models.github.ai/inference
         completions-path: /chat/completions
+    ollama:
+      init:
+        pull-model-strategy: when_missing
+      chat:
+        model: hf.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF #huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF 사용
+        # 터미널에서 ollama pull hf.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF로 다운받기

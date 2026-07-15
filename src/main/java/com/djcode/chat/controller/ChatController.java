@@ -4,7 +4,6 @@ import com.djcode.chat.service.ChatService;
 import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
-import org.jspecify.annotations.NonNull;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
@@ -70,6 +69,11 @@ public class ChatController {
     public Flux<String> stream(@RequestBody @Valid PromptBody promptBody) {
         Prompt prompt = createPrompt(promptBody);
         return chatService.stream(prompt, promptBody.conversationId());
+    }
+
+    @PostMapping(value = "/cs", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ChatService.CsEvaluation cs(@RequestBody @Valid PromptBody promptBody){
+        return chatService.csEvaluation(createPrompt(promptBody), promptBody.conversationId());
     }
 
     private static Prompt createPrompt(PromptBody promptBody) {

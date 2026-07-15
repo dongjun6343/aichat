@@ -1,5 +1,7 @@
 package com.djcode.chat.service;
 
+import com.djcode.chat.Category;
+import com.djcode.chat.Urgency;
 import org.jspecify.annotations.Nullable;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.api.Advisor;
@@ -8,6 +10,8 @@ import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+
+import java.util.List;
 
 @Service
 public class ChatService {
@@ -33,4 +37,14 @@ public class ChatService {
                 ChatMemory.CONVERSATION_ID, conversationId
         ));
     }
+
+    public CsEvaluation csEvaluation(Prompt prompt, String conversationId) {
+        return prepareRequest(prompt, conversationId).call().entity(CsEvaluation.class);
+    }
+
+    public record CsEvaluation(
+            Category category,
+            Urgency urgency,
+            List<String> keywords // [배송지연, 환불요청, 파손]
+    ) {}
 }
